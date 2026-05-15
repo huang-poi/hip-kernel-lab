@@ -16,7 +16,8 @@ jobs:
       - name: Validate repo structure
         run: |
           echo "Checking repository structure..."
-          for dir in conv_2d docs fft flash_attn histogram mat_mul reduce_max reduce_sum scan sort vec_add vec_dot mat_transpose; do
+          REQUIRED_DIRS="conv_2d docs fft flash_attn histogram mat_mul reduce_max reduce_sum scan sort stream_compaction vec_add vec_dot"
+          for dir in $REQUIRED_DIRS; do
             if [ -d "$dir" ]; then
               echo "✓ $dir/ exists"
             else
